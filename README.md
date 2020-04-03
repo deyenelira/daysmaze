@@ -21,9 +21,10 @@ objetivos:
 
 o jogo nao avisa quando voce coleta a quantidade certa kk e nem quando passa a quantidade tb kk
 mas a dica eh:
-N(numero de moedas que voce tem que pegar) eh um numero cuja (soma dos algarismos + multiplicaçao dos algarismos) = 36
+N(numero de moedas que voce tem que pegar) eh um numero cuja (soma dos algarismos + multiplicaçao dos algarismos) = 26
 
 
 
 
 o jogo n eh pra ser dificil, eh so pra eu aprender js bjs
+Uhuu
