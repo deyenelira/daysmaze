@@ -3,6 +3,9 @@ se quiser se aventurar nessa experiencia perfeita que ainda não está finalizad
 existem 106 moedas no labirinto, mas apenas um número especifico libera a chave que abre a saída, caso você pegue mais moedas 
 que o necessário, a chave desaparece e você fica preso no labirinto pra sempre o_o. 
 objetivos:
+
+
+
 -> descobrir qual o numero de moedas que libera a chave e coleta-las;
 
 
