@@ -1,7 +1,12 @@
 (function() {
     var cnv = document.querySelector("canvas");
     var ctx = cnv.getContext("2d");
-
+    var dX1 = 0,
+        dX2 = 0,
+        dX3 = 0,
+        dX4 = 0,
+        dX5 = 0,
+        dmY = 0;
     var walls = [];
 
     var WIDTH = cnv.width,
@@ -35,6 +40,62 @@
     var blue = new Image();
     blue.src = "img/blue.png";
 
+    var gameOver = new Image();
+    gameOver.src = "/home/dayane/Downloads/gameOver.jpg";
+
+    var mImage = new Image();
+    mImage.src = "img/fireball.png";
+
+    var monster1 = {
+        x: tileSize,
+        y: tileSize * 9,
+        width: 64,
+        height: 64,
+        speed: 2,
+        srcX: 0,
+        srcY: 0,
+        countMonst: 0,
+    }
+    var monster2 = {
+        x: tileSize * 19,
+        y: tileSize * 3,
+        width: 64,
+        height: 64,
+        speed: 2,
+        srcX: 0,
+        srcY: 0,
+        countMonst: 0,
+    }
+    var monster3 = {
+        x: tileSize * 15,
+        y: tileSize * 9,
+        width: 64,
+        height: 64,
+        speed: 2,
+        srcX: 0,
+        srcY: 0,
+        countMonst: 0,
+    }
+    var monster4 = {
+        x: tileSize * 7,
+        y: tileSize * 16,
+        width: 64,
+        height: 64,
+        speed: 2,
+        srcX: 0,
+        srcY: 0,
+        countMonst: 0,
+    }
+    var monster5 = {
+        x: tileSize * 32,
+        y: tileSize * 17,
+        width: 64,
+        height: 64,
+        speed: 2,
+        srcX: 0,
+        srcY: 0,
+        countMonst: 0,
+    }
 
     var keysCaught = 0;
     var moedasCaught = 0;
@@ -71,7 +132,8 @@
         DOWN = 40;
     var mvLeft = mvRight = mvDown = mvUp = false;
     var startButton = false,
-        finishButton = false;
+        finishButton = false,
+        gameOverButton = false;
     var maze = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
@@ -156,7 +218,9 @@
     var startImage = new Image();
     startImage.src = "img/menuGame .jpg";
     window.addEventListener("click", function start() {
-        startButton = true;
+        if (!gameOverButton) {
+            startButton = true;
+        }
     }, false);
 
     var finishImage = new Image();
@@ -197,9 +261,120 @@
                 break;
         }
     }
-
+    var flag1 = true,
+        flag2 = true,
+        flag3 = true,
+        flag4 = true,
+        flag5 = true,
+        size = 32,
+        teste = 0;
 
     function update() {
+
+        if (dX1 < size * 7 && flag1) {
+            monster1.x += monster1.speed;
+        } else if (dX1 == size * 7) {
+            dX1 = 0;
+            if (flag1) {
+                flag1 = false;
+                monster1.srcY = monster1.height * 1;
+            } else {
+                flag1 = true;
+                monster1.srcY = monster1.height * 0;
+            }
+        } else if (dX1 < size * 7 && !flag1) {
+            monster1.x -= monster1.speed;
+        }
+        dX1++;
+        if (player.x <= monster1.x + 45 && monster1.x <= player.x + 45 && player.y <= monster1.y + 45 && monster1.y <= player.y + 45) {
+            finishButton = false;
+            startButton = false;
+            gameOverButton = true;
+        }
+        //opa
+        if (dX2 < size * 5 && flag2) {
+            monster2.x += monster2.speed;
+        } else if (dX2 == size * 5) {
+            dX2 = 0;
+            if (flag2) {
+                flag2 = false;
+                monster2.srcY = monster2.height * 1;
+            } else {
+                flag2 = true;
+                monster2.srcY = monster2.height * 0;
+            }
+        } else if (dX2 < size * 5 && !flag2) {
+            monster2.x -= monster2.speed;
+        }
+        dX2++;
+        if (player.x <= monster2.x + 45 && monster2.x <= player.x + 45 && player.y <= monster2.y + 45 && monster2.y <= player.y + 45) {
+            finishButton = false;
+            startButton = false;
+            gameOverButton = true;
+        }
+        //opa
+        if (dX3 < size * 12 && flag3) {
+            monster3.x += monster3.speed;
+        } else if (dX3 == size * 12) {
+            dX3 = 0;
+            if (flag3) {
+                flag3 = false;
+                monster3.srcY = monster3.height * 1;
+            } else {
+                flag3 = true;
+                monster3.srcY = monster3.height * 0;
+            }
+        } else if (dX3 < size * 12 && !flag3) {
+            monster3.x -= monster3.speed;
+        }
+        dX3++;
+        if (player.x <= monster3.x + 45 && monster3.x <= player.x + 45 && player.y <= monster3.y + 45 && monster3.y <= player.y + 45) {
+            finishButton = false;
+            startButton = false;
+            gameOverButton = true;
+        }
+        //opa
+        if (dX4 < size * 17 && flag4) {
+            monster4.x += monster4.speed;
+        } else if (dX4 == size * 17) {
+            dX4 = 0;
+            if (flag4) {
+                flag4 = false;
+                monster4.srcY = monster4.height * 1;
+            } else {
+                flag4 = true;
+                monster4.srcY = monster4.height * 0;
+            }
+        } else if (dX4 < size * 17 && !flag4) {
+            monster4.x -= monster4.speed;
+        }
+        dX4++;
+        if (player.x <= monster4.x + 45 && monster4.x <= player.x + 45 && player.y <= monster4.y + 45 && monster4.y <= player.y + 45) {
+            finishButton = false;
+            startButton = false;
+            gameOverButton = true;
+        }
+        if (dX5 < size * 5 && flag5) {
+            monster5.x += monster5.speed;
+        } else if (dX5 == size * 5) {
+            dX5 = 0;
+            if (flag5) {
+                flag5 = false;
+                monster5.srcY = monster5.height * 1;
+            } else {
+                flag5 = true;
+                monster5.srcY = monster5.height * 0;
+            }
+        } else if (dX5 < size * 5 && !flag5) {
+            monster5.x -= monster5.speed;
+        }
+        dX5++;
+        if (player.x <= monster5.x + 45 && monster5.x <= player.x + 45 && player.y <= monster5.y + 45 && monster5.y <= player.y + 45) {
+            finishButton = false;
+            startButton = false;
+            gameOverButton = true;
+        }
+        //opa
 
         if (mvLeft && !mvRight) {
             player.x -= player.speed;
@@ -231,6 +406,7 @@
             var wall = walls[i];
             blockRectangle(player, wall);
         }
+
         var dX = 9,
             dY = 5;
         for (var i = 0; i < 9; i++) {
@@ -678,6 +854,34 @@
             if (moedasCaught) {
                 ctx.drawImage(door, tileSize * 37, tileSize * 2);
             }
+
+            //dX = 2, dY = 9;
+            ctx.drawImage(
+                mImage,
+                monster1.srcX, monster1.srcY, monster1.width, monster1.height,
+                monster1.x, monster1.y, monster1.width, monster1.height
+            );
+            ctx.drawImage(
+                mImage,
+                monster2.srcX, monster2.srcY, monster2.width, monster2.height,
+                monster2.x, monster2.y, monster2.width, monster2.height
+            );
+            ctx.drawImage(
+                mImage,
+                monster3.srcX, monster3.srcY, monster3.width, monster3.height,
+                monster3.x, monster3.y, monster3.width, monster3.height
+            );
+            ctx.drawImage(
+                mImage,
+                monster4.srcX, monster4.srcY, monster4.width, monster4.height,
+                monster4.x, monster4.y, monster4.width, monster4.height
+            );
+            ctx.drawImage(
+                mImage,
+                monster5.srcX, monster5.srcY, monster5.width, monster5.height,
+                monster5.x, monster5.y, monster5.width, monster5.height
+            );
+
             ctx.drawImage(
                 char,
                 player.srcX, player.srcY, player.width, player.height,
@@ -690,7 +894,10 @@
             ctx.textAlign = "left";
             ctx.textBaseline = "top";
             ctx.fillText("Moedas coletadas: " + keysCaught, 0, 0);
+        } else if (gameOverButton) {
+            ctx.drawImage(gameOver, 0, 0);
         }
+
 
     }
 
