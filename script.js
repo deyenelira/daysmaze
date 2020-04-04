@@ -41,7 +41,7 @@
     blue.src = "img/blue.png";
 
     var gameOver = new Image();
-    gameOver.src = "/home/dayane/Downloads/gameOver.jpg";
+    gameOver.src = "img/gameOver.jpg";
 
     var mImage = new Image();
     mImage.src = "img/fireball.png";
